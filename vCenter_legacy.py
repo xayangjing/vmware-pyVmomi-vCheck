@@ -4,10 +4,10 @@ import getpass
 
 class legacy:
 
-    HOST = host
+    HOST = 'umwvcenter01.ad.umassmed.edu'
     PASSWORD = getpass.getpass('Enter password')
     PORT = 443
-    USER = username
+    USER = 'LingamaS1@ad.umassmed.edu'
     connection = SmartConnectNoSSL(host=HOST, user=USER, pwd=PASSWORD, port=PORT)
     content = connection.RetrieveContent()
 
@@ -28,9 +28,9 @@ class legacy:
 
     #VM information
     def getVmInfo(self,content):
-        vmlist= [vm for vm in self.get_vim_objects(content, vim.VirtualMachine) if not vm.config.template ]
+        vmlist= [vm for vm in self.get_vim_objects(content, vim.VirtualMachine)  ]
         vmCount = len(vmlist)
-        return vmCount
+        return vmCount,vmlist
 
 
 
