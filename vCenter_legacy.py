@@ -11,11 +11,9 @@ class legacy:
     connection = SmartConnectNoSSL(host=HOST, user=USER, pwd=PASSWORD, port=PORT)
     content = connection.RetrieveContent()
 
-    vmlist =[]
-    datastore_map = {}
-    datastore_list = []
-    host_map = {}
 
+    datastore_map = {}
+    host_map = {}
 
 
     #retrieves objects in vcenter
@@ -23,15 +21,6 @@ class legacy:
         return [item for item in content.viewManager.CreateContainerView(
             content.rootFolder, [vim_type], recursive=True
         ).view]
-
-
-
-    #VM information
-    def getVmInfo(self,content):
-        vmlist= [vm for vm in self.get_vim_objects(content, vim.VirtualMachine)  ]
-        vmCount = len(vmlist)
-        return vmCount,vmlist
-
 
 
     #datastores mapped to hosts,hosts mapped to VMs
