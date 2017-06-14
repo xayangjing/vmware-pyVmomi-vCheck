@@ -7,3 +7,4 @@ def lost_network_redundancy():
         for pnic in host.config.network.pnic:
 
 # not yet done
+
